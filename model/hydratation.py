@@ -7,7 +7,8 @@ class Rdv():
         self.date = None
         self.hour = None
         self.description = None
-        self.hydratation(data)
+        if data:
+            self.hydratation(data)
 
 
     def hydratation(self,data):
