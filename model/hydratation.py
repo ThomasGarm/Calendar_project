@@ -1,14 +1,14 @@
 
 
 class Rdv():
-    def __init__(self, data):
+    def __init__(self):
         self.ID = None
         self.title = None
         self.date = None
         self.hour = None
         self.description = None
-        if data:
-            self.hydratation(data)
+        #if data:
+            #self.hydratation(data)
 
 
     def hydratation(self,data):

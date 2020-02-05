@@ -1,4 +1,4 @@
-from .connection import Connection
+from model.connection import Connection
 from .hydratation import Rdv
 
 class View_model():
@@ -6,7 +6,7 @@ class View_model():
         self.db = Connection()
 
 def add_rdv(self, arg):
-    sql ="INSERT INTO message (title, description) VALUES (%s, %s );"
+    sql ="""INSERT INTO calendar (title, description) VALUES (%s, %s );"""
     arguments = (arg.title, arg.date, arg.hour, arg.description)
     self.db.initialize_connection()
     self.db.cursor.execute(sql, arguments)
@@ -23,11 +23,20 @@ def del_rdv(self, title):
         
 
 
-def get_rdv(self, date):
+def get_all_rdv(self, date):
     sql = "SELECT * FROM calendar WHERE date = %s;"
     self.db.initialize_connection()
     self.db.cursor.execute(sql, (date,))
     rdv = self.db.cursor.fetchall()
     self.db.close_connection()
-    for key, value in enumerate(rdv)
+    for key, value in enumerate(rdv):
+        rdv [key] = Rdv(value)
+        return rdv
+
+def get_rdv(self, title):
+    sql = "SELECT * FROM calendar WHERE date = %s and hour=%s;"
+    self.db.initialize_connection()
+    self.db.cursor.execute(sql, (title,))
+    rdv = self.db.cursor.fetchone()
+    self.db.close_connection()
     return rdv
