@@ -1,0 +1,1 @@
+from Calendar_project.model import view_model

@@ -16,6 +16,6 @@ class Rdv():
             if hasattr(self, key):
                 setattr(self, key, value)
 
-    def show_information(self, info):
-       info = f"=======================\n title: {self.title}\n date: {self.date}\n hour: {self.hour}\n description: {self.description}"
+    def show_information(self):
+       return f"=======================\n title: {self.title}\n date: {self.date}\n hour: {self.hour}\n description: {self.description}"
        
