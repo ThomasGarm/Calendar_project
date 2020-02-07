@@ -5,38 +5,38 @@ class View_model():
     def __init__(self):
         self.db = Connection()
 
-def add_rdv(self, arg):
-    sql ="""INSERT INTO calendar (title, description) VALUES (%s, %s );"""
-    arguments = (arg.title, arg.date, arg.hour, arg.description)
-    self.db.initialize_connection()
-    self.db.cursor.execute(sql, arguments)
-    self.db.connection.commit()
-    self.db.close_connection()
+    def add_rdv(self, title, date, hour, description):
+        sql ="""INSERT INTO calendar (title, date, hour, description) VALUES (%s, %s, %s, %s );"""
+        arguments = (title, date, hour, description)
+        self.db.initialize_connection()
+        self.db.cursor.execute(sql, arguments)
+        self.db.connection.commit()
+        self.db.close_connection()
 
-def del_rdv(self, title):
-    sql = "DELETE * FROM calendar WHERE date = %s and hour = %s);"
-    self.db.initialize_connection()
-    self.db.cursor.execute(sql)
-    self.db.connection.commit()
-    self.db.close_connection()
+    def del_rdv(self, date, hour):
+        sql = "DELETE title, date, hour, description FROM calendar WHERE date = %s and hour = %s);"
+        self.db.initialize_connection()
+        self.db.cursor.execute(sql)
+        self.db.connection.commit()
+        self.db.close_connection()
 
-        
+            
 
 
-def get_all_rdv(self, date):
-    sql = "SELECT * FROM calendar WHERE date = %s;"
-    self.db.initialize_connection()
-    self.db.cursor.execute(sql, (date,))
-    rdv = self.db.cursor.fetchall()
-    self.db.close_connection()
-    for key, value in enumerate(rdv):
-        rdv [key] = Rdv(value)
+    def get_all_rdv(self, date):
+        sql = "SELECT * FROM calendar WHERE date = %s;"
+        self.db.initialize_connection()
+        self.db.cursor.execute(sql, (date,))
+        rdv = self.db.cursor.fetchall()
+        self.db.close_connection()
+        for key, value in enumerate(rdv):
+            rdv [key] = Rdv(value)
+            return rdv
+
+    def get_rdv(self, date, hour):
+        sql = "SELECT * FROM calendar WHERE date = %s and hour=%s;"
+        self.db.initialize_connection()
+        self.db.cursor.execute(sql, (date, hour))
+        rdv = self.db.cursor.fetchone()
+        self.db.close_connection()
         return rdv
-
-def get_rdv(self, title):
-    sql = "SELECT * FROM calendar WHERE date = %s and hour=%s;"
-    self.db.initialize_connection()
-    self.db.cursor.execute(sql, (title,))
-    rdv = self.db.cursor.fetchone()
-    self.db.close_connection()
-    return rdv
