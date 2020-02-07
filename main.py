@@ -15,5 +15,17 @@ print("Vous êtes sur votre agenda personnel.")
 if __name__ == "__main__":
  choice = ""
  while choice != "q":
-    if currentMonth
+    if choice="n":
+        if currentMonth < 12:
+        currentMonth += 1
+        else:
+        currentMonth = 1
+        currentYear += 1
+    elif choice = "p":
+        if currentMonth > 1:
+            currentMonth -= 1
+        else:
+            currentMonth = 12:
+            currentYear -=1
+
 
